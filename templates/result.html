@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>測定結果</h2>
+<hr>
+
+<a class="btn btn-secondary mt-3" href="{% url 'top' %}">戻る</a>
+<table class="table table-bordered mt-5" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                画像名
+            </th>
+            <th>
+                検出個数
+            </th>
+            <th>
+                作成日時
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in detect_result %}
+        <tr>
+            <td>
+                {{ result.id }}
+            </td>
+            <td>
+                {{ result.upload_image.image_name }}
+            </td>
+            <td>
+                {{ result.count }}
+            </td>
+            <td>
+                {{ result.created_at }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>測定結果は...『 {{ count }}匹 』です!</p>
+
+{% endblock %}
