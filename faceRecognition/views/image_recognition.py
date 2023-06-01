@@ -1,5 +1,4 @@
-""" 特定物体の識別処理
-"""
+""" 特定物体の識別処理 """
 import os
 import sys
 import cv2
@@ -8,6 +7,7 @@ from faceRecognition.models.models import UploadImages, DetectResult
 
 
 IMAGE_DIR = 'C:/Users/daiko/Develop_satoshi/FaceRecognitionApp/static/images/'
+
 
 def image_save(processing_upload_file, original_file):
     """Web上からアップロードされた画像ファイルを保存する
@@ -56,9 +56,6 @@ def detect(image_file, cascade_file_name, original_file_path, create_image):
         copy_img_gray: 検出しレクタングルされた静止画
         number_of_individuals: 検出した個体数
     """
-    create_image_id = create_image.id
-    img = UploadImages.objects.get(pk=create_image_id)
-
     # 分類器の準備
     cascade = cv2.CascadeClassifier(cascade_file_name)
 

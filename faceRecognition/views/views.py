@@ -1,8 +1,8 @@
 from django.shortcuts import render
-import cv2 # OpenCV
+import cv2
 import numpy as np
 
-from faceRecognition.models.models import UploadImages, DetectResult
+from faceRecognition.models.models import DetectResult
 from .image_recognition import image_save, convert_gray, detect
 
 
@@ -33,7 +33,7 @@ def top(request):
         # detect&rectangle
         cascade_file = get_cascade_file()
         result, count = detect(img_gray, cascade_file, original_file_path, create_image)
-        
+
         detect_result = DetectResult.objects.all()
 
         return render(
@@ -44,6 +44,6 @@ def top(request):
                 'count': count
                 },
             )
-    
+
     # GET
     return render(request, 'top.html')
